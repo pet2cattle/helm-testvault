@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ include "testvault.fullname" . }}-vaultcli
+  labels:
+    {{- include "testvault.labels" . | nindent 4 }}
+spec:
+  containers:
+  - command:
+    - sleep
+    - 24h
+    env:
+      - name: VAULT_ADDR
+        value: http://{{ include "testvault.fullname" . }}:80
+    image: vault
+    name: vaultcli
+    resources: {}
