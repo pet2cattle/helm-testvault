@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  testvault:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-09-15T18:38:56.97252645Z"
+    description: Helm chart for deploying a test vaults (not for prod)
+    digest: 1cc48fe3e124c14945415be409874c97c8b1360694693e49922ed20605ae7dd9
+    name: testvault
+    type: application
+    urls:
+    - https://github.com/pet2cattle/helm-testvault/releases/download/testvault-1.0.0/testvault-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-09-15T18:38:56.97253445Z"
