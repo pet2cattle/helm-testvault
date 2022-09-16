@@ -17,6 +17,7 @@ spec:
       {{- end }}
       labels:
         {{- include "testvault.selectorLabels" . | nindent 8 }}
+        component: vaultd
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -42,6 +43,8 @@ spec:
             value: "true" 
           - name: "SKIP_SETCAP" 
             value: "true"
+          - name: VAULT_ADDR
+            value: http://127.0.0.1:8080
           - name: VAULT_API_ADDR
             value: http://127.0.0.1:8080
           - name: HOME
@@ -67,7 +70,7 @@ spec:
               containerPort: 8081
               protocol: TCP
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- toYaml .Values.resources.daemon | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

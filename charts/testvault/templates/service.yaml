@@ -8,8 +8,9 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: vault
+      targetPort: 8080
       protocol: TCP
       name: http
   selector:
     {{- include "testvault.selectorLabels" . | nindent 4 }}
+    component: vaultd

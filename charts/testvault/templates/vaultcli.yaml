@@ -4,14 +4,16 @@ metadata:
   name: {{ include "testvault.fullname" . }}-vaultcli
   labels:
     {{- include "testvault.labels" . | nindent 4 }}
+    component: cli
 spec:
   containers:
   - command:
     - sleep
-    - 24h
+    - infinity and beyond
     env:
       - name: VAULT_ADDR
-        value: http://{{ include "testvault.fullname" . }}:80
+        value: http://{{ include "testvault.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}
     image: vault
     name: vaultcli
-    resources: {}
+    resources:
+      {{- toYaml .Values.resources.cli | nindent 6 }}
