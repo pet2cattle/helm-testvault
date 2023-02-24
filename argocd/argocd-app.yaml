@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: testvault
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: 'https://pet2cattle.github.io/helm-testvault/'
+    chart: testvault
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
